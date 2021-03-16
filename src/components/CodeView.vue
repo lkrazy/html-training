@@ -38,10 +38,7 @@
     watch: {
       isActive(val) {
         if (val) {
-          setTimeout(() => {
-            this.calculateCodeSize()
-            this.isReady = true
-          }, 300)
+          this.calculateCodeSize()
         } else {
           this.isReady = false
         }
@@ -67,10 +64,13 @@
     },
     methods: {
       calculateCodeSize() {
-        const { innerHeight } = window
-        const { innerWidth } = window
-        this.height = innerHeight - 106
-        this.width = (innerWidth - 80) / 2 - 10
+        setTimeout(() => {
+          const { innerHeight } = window
+          const { innerWidth } = window
+          this.height = innerHeight - 106
+          this.width = (innerWidth - 80) / 2 - 10
+          this.isReady = true
+        }, 300)
       },
       generateCode() {
         this.sourceCode = SAMPLE_CODE
