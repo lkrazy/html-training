@@ -1,0 +1,1 @@
+#docFrame body,#docFrame html{overflow:hidden}#app-bar .mode-btn{height:100%}#app-bar .mode-btn.active{border-bottom:2px solid #2eda31;color:#2eda31}#app-bar .mode-btn:not(.active){border-bottom:2px solid transparent}#main-app iframe{border:none}
