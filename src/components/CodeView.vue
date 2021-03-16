@@ -3,7 +3,7 @@
     v-row.ma-0
       v-col.pl-0.pr-0(md="6" ref="codeColumn")
         monaco-editor(
-        v-if="isActive"
+        v-if="isReady && isActive"
         :options="options"
         v-model="sourceCode"
         :width="width"
@@ -35,8 +35,21 @@
         type: Boolean
       }
     },
+    watch: {
+      isActive(val) {
+        if (val) {
+          setTimeout(() => {
+            this.calculateCodeSize()
+            this.isReady = true
+          }, 300)
+        } else {
+          this.isReady = false
+        }
+      }
+    },
     data: () => ({
       sourceCode: '',
+      isReady: false,
       height: 500,
       width: 500,
       options: {

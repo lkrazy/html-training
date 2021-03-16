@@ -1,5 +1,5 @@
 module.exports = {
-  // lintOnSave: false,
+  lintOnSave: false,
   transpileDependencies: ['vuetify'],
   publicPath: process.env.NODE_ENV === 'production' ? '/html-training/' : '/',
   outputDir: 'docs'
