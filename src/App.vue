@@ -75,6 +75,7 @@
 </template>
 
 <script>
+  import isNil from 'lodash/isNil'
   import htmlMenu from '@/router/htmlMenu'
   import cssMenu from '@/router/cssMenu'
   import HelloWorld from './components/HelloWorld'
@@ -101,12 +102,10 @@
       }
     },
     mounted() {
-      console.log(this.$route)
-      this.selectedCourse = this.courses.find((course) => {
-        console.log('courseName: ', course.name, course)
+      const selectedCourse = this.courses.find((course) => {
         return this.$route.matched.some((m) => m.name === course.name)
       })
-      console.log('course: ', this.selectedCourse)
+      this.selectedCourse = isNil(selectedCourse) ? htmlMenu : cssMenu
     }
   }
 </script>

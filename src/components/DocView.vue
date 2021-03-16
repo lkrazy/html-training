@@ -1,6 +1,7 @@
 <template lang="pug">
   v-container.pa-0(fluid)
     iframe#docFrame(
+      v-if="hasDoc"
       name="docFrame"
       width="100%"
       :height="height"
@@ -9,6 +10,9 @@
 </template>
 
 <script>
+  import isNil from 'lodash/isNil'
+  import isEmpty from 'lodash/isEmpty'
+
   export default {
     name: 'DocView',
 
@@ -16,8 +20,11 @@
       height: 500
     }),
     computed: {
+      hasDoc() {
+        return !isNil(this.$route.meta.doc) && !isEmpty(this.$route.meta.doc)
+      },
       docLink() {
-        return `/docs/${this.$route.meta.doc}.html`
+        return `./docs/${this.$route.meta.doc}.html`
       }
     },
     methods: {
