@@ -34,11 +34,15 @@
         link.href = 'https://www.w3schools.com/lib/w3schools23.css'
         link.rel = 'stylesheet'
         link.type = 'text/css'
-        // this.$refs.docFrame.document.head.appendChild(link)
         window.frames.docFrame.document.head.appendChild(link)
         window.frames.docFrame.document.documentElement.style.overflow = 'hidden'
         setTimeout(() => {
-          this.height = window.frames.docFrame.document.documentElement.scrollHeight + 50
+          const windowHeight = window.innerHeight
+          let height = window.frames.docFrame.document.documentElement.scrollHeight + 50
+          if (height < windowHeight) {
+            height = windowHeight
+          }
+          this.height = height
         }, 1000)
       }
     },
