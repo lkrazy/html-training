@@ -1,0 +1,7 @@
+a.w3-btn.w3-margin-bottom,
+a.w3-bar-item.w3-btn,
+a.w3-btn {
+  display: none !important;
+}
+
+a.w3-bar-item.w3-btn

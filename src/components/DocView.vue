@@ -27,14 +27,27 @@
         return `./docs/${this.$route.meta.doc}.html`
       }
     },
+    watch: {
+      $route(val, oldVal) {
+        if (val.name !== oldVal.name) {
+          window.scrollTo(0, 0)
+        }
+      }
+    },
     methods: {
       onFrameLoaded() {
         // <link rel="stylesheet" href="https://www.w3schools.com/lib/w3schools23.css">
         const link = document.createElement('link')
-        link.href = 'https://www.w3schools.com/lib/w3schools23.css'
+        link.href = '../../w3schools23.css'
         link.rel = 'stylesheet'
         link.type = 'text/css'
         window.frames.docFrame.document.head.appendChild(link)
+        const link1 = document.createElement('link')
+        link1.href = '../../w3css.css'
+        link1.rel = 'stylesheet'
+        link1.type = 'text/css'
+        window.frames.docFrame.document.head.appendChild(link)
+        window.frames.docFrame.document.head.appendChild(link1)
         window.frames.docFrame.document.documentElement.style.overflow = 'hidden'
         setTimeout(() => {
           const windowHeight = window.innerHeight

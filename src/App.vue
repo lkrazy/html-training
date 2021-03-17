@@ -98,7 +98,9 @@
     methods: {
       changeMode(mode) {
         this.$eventBus.$emit(`changeMode:${mode}`)
-        this.$router.push({ path: this.$route.path, query: { mode } }).catch(() => {})
+        this.$router
+          .push({ path: this.$route.path, query: { mode } })
+          .catch(() => {})
       }
     },
     mounted() {
